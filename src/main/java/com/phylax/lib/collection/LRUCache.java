@@ -151,17 +151,14 @@ public class LRUCache<K, V> {
      * </p>
      *
      * @param key the key of the entry to remove; must not be {@code null}
-     * @return {@code true} if the entry was present and removed; {@code false} if the key was not found
      * @throws NullPointerException if the key is {@code null}
      */
-    public synchronized boolean delete(K key) {
+    public synchronized void delete(K key) {
 
         if(this.cacheMap.containsKey(key)) {
             this.accessOrderQueue.remove(key);
             this.cacheMap.remove(key);
-            return true;
         }
-        return false;
     }
 
     /**
